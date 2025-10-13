@@ -1,0 +1,856 @@
+/* --- Basic Reset & Global Styles --- */
+:root {
+    --primary-blue: #4356D6;
+    --primary-blue-dark: #5254CF;
+    --text-dark: #000000;
+    --text-dark-secondary: #333;
+    --text-light: #FFFFFF;
+    --background-light: #FAFBFF;
+    --font-roboto: 'Roboto', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-roboto);
+    background-color: var(--text-light); /* Set default background to white */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 72px;
+    overflow: hidden;
+}
+
+/* --- Navbar Styles --- */
+.navbar {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+   background: linear-gradient(261.18deg, #FAFBFF -0.46%, #FAFBFF 100.67%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.nav-links ul {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark-secondary);
+    font-weight: 500;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+    color: var(--primary-blue);
+}
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #6259E4;
+    color: var(--text-light);
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.button-icon {
+    height: 20px;
+}
+
+/* --- Hero Section Styles --- */
+
+/* The main container for the section */
+.hero-section {
+    position: relative; /* This is the anchor for all absolutely positioned children */
+    width: 100%;
+    max-width: 1440px; /* Max-width from your design spec */
+    height: 829px;     /* Height from your design spec */
+    margin: 0 auto;    /* Center the container on larger screens */
+    background: linear-gradient(261.18deg, #FAFBFF -0.46%, #FAFBFF 100.67%);
+    overflow: hidden;  /* Prevents background elements from spilling out */
+}
+
+/* Faded background circle */
+.background-ellipse {
+    position: absolute;
+    width: 974px;
+    height: 974px;
+    left: -368px;
+    top: 212px;
+    background: #F5F6FA;
+    filter: blur(125px);
+    z-index: 0; /* Places it in the very back */
+}
+
+
+/* --- Left Side Content --- */
+/* This block corresponds to your "Group 11" rules */
+.hero-content {
+    position: absolute;
+    width: 606px;
+    height: auto; /* auto is better than a fixed height for content changes */
+    left: 72px;
+    top: 180px;
+    z-index: 2; /* Ensures content is on top of everything */
+
+    /* Internal layout for the text, list, and buttons */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 26px;
+}
+
+.hero-content h1 {
+   font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 85px;
+    color: #000000;
+}
+
+.hero-content .highlight {
+    color: #4356D6; /* Sets the text color to blue */
+    position: relative; /* This is the anchor for positioning the underline image */
+    display: inline-block;
+}
+
+.hero-content .highlight img {
+    position: absolute;   /* Positions the image relative to the .highlight span */
+    bottom: 10px;         /* Adjust this value to move the line up or down */
+    left: 0;
+    width: 100%;          /* Stretches the image to the full width of "Compliance" */
+    height: 8px;          /* Controls the thickness of the line */
+    z-index: -1;
+}
+
+.hero-description {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32px;
+    color: #000000;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.feature-list img {
+    width: 24px;
+    height: 24px;
+}
+
+/* --- Button Container (for spacing) --- */
+.button-container {
+    display: flex;
+    gap: 1.5rem; /* Adjust the space between the buttons */
+}
+
+/* --- Base Button Styles (for both buttons) --- */
+.btn {
+    /* Layout & Sizing */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 28px;
+    
+    /* Font & Text */
+    font-family: 'Poppins', sans-serif; /* A good font choice for this style */
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    
+    /* Appearance */
+    border-radius: 8px;
+    cursor: pointer;
+    
+    /* Animation */
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Primary Button ("Get Started") --- */
+.btn-primary {
+    background-color: #6259E4; /* Solid blue background */
+    color: #FFFFFF;            /* White text */
+    border: 2px solid #6259E4;  /* Border color matches background */
+}
+
+.btn-primary:hover {
+    background-color: #5048B8; /* Slightly darker blue on hover */
+    border-color: #5048B8;
+}
+
+/* --- Secondary Button ("Book A Consultation") --- */
+.btn-secondary {
+    background-color: #FFFFFF; /* White/transparent background */
+    color: #6259E4;            /* Blue text */
+    border: 2px solid #6259E4;  /* Blue border */
+}
+
+.btn-secondary:hover {
+    background-color: #6259E4; /* Inverts colors on hover */
+    color: #FFFFFF;
+}
+
+
+/* --- Right Side Image Area --- */
+/* This block corresponds to your "Group 21" rules */
+.hero-image-area {
+    position: absolute;
+    width: 739.13px;
+    height: 607px;
+    left: 677.87px;
+    top: 156px;
+    z-index: 1; /* Sits between the content and the background ellipse */
+}
+
+.hero-banner-image {
+    width: 100%;
+    height: 100%;
+}
+
+/* Styling for the floating cards INSIDE the image area */
+.card {
+    position: absolute; /* Positioned relative to .hero-image-area */
+    display: flex;
+    align-items: center;
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+
+.trusted-card {
+    width: 255px;
+    height: 121px;
+    padding: 20px;
+    gap: 20px;
+    bottom: 50px; /* Positioned relative to the bottom of the image container */
+    left: 52px;  /* Positioned relative to the left of the image container */
+}
+
+.card-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background-color: #5254CF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-text {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.card-prominent-text {
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 47px;
+    color: #4356D6;
+}
+
+.rating-card {
+    width: 252px;
+    height: 105px;
+    padding: 20px 15px;
+    gap: 20px;
+    top: 236px;     /* Positioned relative to the top of the image container */
+    right: -115px;  /* Positioned relative to the right of the image container */
+    background: rgba(255, 255, 255, 0.79);
+    backdrop-filter: blur(45.5px);
+}
+
+.rating-number {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    color: #4356D6;
+}
+
+.rating-details {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.stars {
+    display: flex;
+    gap: 4px;
+}
+
+.rating-details span {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #000000;
+}
+
+/* --- Compliance Section Styles --- */
+
+/* --- Compliance Section Styles --- */
+
+.compliance-section {
+    padding: 120px 0;
+    background-color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* This is the main layout container for the two rows */
+.compliance-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 60px; /* This creates the vertical space between the top and bottom rows */
+}
+/* --- Compliance Section: Top Row --- */
+
+.compliance-heading {
+    /* This is crucial: It makes this div the positioning 'anchor' for the arrow */
+    position: relative; 
+}
+
+.spiral-arrow {
+    /* This takes the arrow out of the normal document flow */
+    position: absolute;
+
+    /* These values position the arrow. You may need to tweak them slightly. */
+    top: 60px;
+    right: -30px; /* A negative value pushes it outside the parent container to the right */
+
+    /* Optional: Control the size of the arrow */
+    width: 50px;
+    height: auto;
+}
+
+/* --- Top & Bottom Row Styling --- */
+.compliance-top-row,
+.compliance-bottom-row {
+    display: flex;
+    align-items: flex-start; /* Aligns content to the top */
+    gap: 80px; /* This creates the horizontal space between the two columns in each row */
+}
+
+/* --- Column Sizing --- */
+.compliance-heading,
+.compliance-text,
+.compliance-image,
+.compliance-features-wrapper {
+    flex: 1; /* This makes all four columns take up equal space */
+    gap: 2px;
+}
+
+/* --- Top Row Specific Styling --- */
+.compliance-heading h2 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #000000;
+}
+
+.compliance-heading .highlight {
+    color: #4356D6; /* Blue color for "Compliance Matters" */
+}
+
+.compliance-description {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #333333;
+    padding-top: 10px; /* Aligns the text better with the heading */
+}
+
+/* --- Bottom Row Specific Styling --- */
+.compliance-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.compliance-features {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Space between each feature card */
+}
+
+/* Feature Item Card Styling */
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: linear-gradient(261.18deg, #FAFBFF -0.46%, #FAFBFF 100.67%);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #EAEBEE;
+}
+
+.feature-icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+}
+
+.feature-text h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #000000;
+    margin: 0 0 8px 0;
+}
+
+.feature-text p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555555;
+    margin: 0;
+}
+
+
+/* =================================== */
+/* 6. Mobile Navigation & Responsiveness */
+/* =================================== */
+
+/* --- Default Mobile Styles (under 1024px) --- */
+.nav-links, .desktop-only {
+    display: none;
+}
+.hamburger-menu {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--dark-text);
+}
+
+/* --- Mobile Nav Panel --- */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 85%;
+    max-width: 320px;
+    height: 100%;
+    background: var(--white);
+    box-shadow: -5px 0 25px rgba(104, 19, 19, 0.15);
+    z-index: 2000;
+    transform: translateX(100%); /* Start off-screen */
+    transition: transform 0.35s ease-in-out;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    width: 300px;
+}
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2.8rem;
+    color: var(--primary-blue);
+    cursor: pointer;
+    line-height: 1;
+}
+.mobile-nav-links {
+    flex-grow: 1;
+}
+.mobile-nav-links li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.mobile-nav-links a:hover,
+.mobile-nav-links a.active {
+    background-color: #f0f4ff;
+    color: var(--primary-blue);
+}
+.mobile-nav-links img {
+    width: 24px;
+    height: 24px;
+}
+.mobile-nav .contact-button {
+    width: 100%;
+}
+
+
+
+/* --- Overlay --- */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease-in-out;
+}
+
+/* --- Active State (Toggled by JavaScript) --- */
+body.mobile-nav-open {
+    overflow: hidden; /* Prevent scrolling when menu is open */
+}
+body.mobile-nav-open .mobile-nav {
+    transform: translateX(0); /* Slide menu into view */
+}
+body.mobile-nav-open .overlay {
+    opacity: 1;
+    pointer-events: auto; /* Allow clicking the overlay to close */
+}
+
+
+/* =================================== */
+/* 7. Desktop Breakpoint               */
+/* =================================== */
+
+@media (min-width: 1440px) {
+    /* Hide mobile elements on desktop */
+    .hamburger-menu {
+        display: none;
+    }
+    
+    /* Show desktop elements */
+    .nav-links, .desktop-only {
+        display: flex; /* or 'block' depending on the element */
+    }
+
+    .nav-links ul {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+    }
+    .nav-links a {
+        font-weight: 500;
+        font-size: 18px;
+        color: var(--body-text);
+        padding: 10px;
+        transition: color 0.3s ease;
+    }
+    .nav-links a.active, .nav-links a:hover {
+        color: var(--primary-blue);
+    }
+}
+
+@media (max-width: 425px) {
+
+    :root {
+    --primary-blue: #4356D6;
+    --text-dark: #000000;
+    --text-light: #FFFFFF;
+    --background-light: #FAFBFF;
+    --font-roboto: 'Roboto', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-roboto);
+    background-color: var(--text-light);
+    overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 16px; /* Padding for 375px mobile view */
+}
+
+/* ------------------- */
+/* 2. Navbar (Mobile First) */
+/* ------------------- */
+.navbar {
+    width: 100%;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    background: var(--text-light);
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.11);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 34px;
+}
+
+/* Hide desktop elements on mobile */
+.nav-links, .desktop-only {
+    display: none;
+}
+
+.hamburger-menu {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--text-dark);
+}
+.hamburger-menu svg { width: 24px; height: 24px; }
+
+/* ------------------- */
+/* 3. Hero Section (Mobile First) */
+/* ------------------- */
+/* =================================== */
+/* 3. Hero Section (Mobile First)      */
+/* =================================== */
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    background: #FAFBFF;
+    padding: 40px 0;
+    overflow: hidden;
+}
+
+/* .background-ellipse { 
+    display: none; 
+} */
+
+.hero-container {
+    display: flex;
+    flex-direction: column; /* This stacks the left and right columns on mobile */
+    align-items: center;
+    gap: 36px;
+}
+
+/* NEW: Style the new column wrappers for mobile */
+.hero-left-column, .hero-right-column {
+    width: 100%;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+}
+
+.hero-content h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 48px;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.hero-content .highlight {
+    color: #4356D6;
+    position: relative;
+    display: inline-block;
+}
+
+.hero-content .highlight-underline {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+.hero-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 32px;
+    color: #000000;
+    max-width: 343px;
+}
+
+.feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 315px;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 18px;
+    line-height: 32px;
+    text-align: left;
+}
+
+.feature-list img {
+    width: 24px;
+    height: 24px;
+    margin-top: 4px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    padding-top: 10px;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 46px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: #4356D6;
+    color: #FFFFFF;
+    border: 1px solid #4356D6;
+}
+
+.btn-secondary {
+    background-color: #FFFFFF;
+    color: #4356D6;
+    border: 2px solid #4356D6;
+}
+
+.hero-image-area { width: 24px; height: 24px; }
+   
+
+/* ------------------- */
+/* 4. Compliance Section (Mobile First) */
+/* ------------------- */
+.compliance-section {
+    padding: 50px 0;
+}
+.compliance-layout, .compliance-top-row, .compliance-bottom-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 36px;
+}
+.spiral-arrow { display: none; }
+.compliance-heading h2 {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 48px;
+}
+.compliance-heading .highlight { color: var(--primary-blue); }
+.compliance-description { font-size: 18px; line-height: 32px; }
+.compliance-features { display: flex; flex-direction: column; gap: 26px; width: 100%; }
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 26px;
+    background: var(--background-light);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #E2E7FF;
+    text-align: left;
+}
+.feature-icon { width: 36px; height: 36px; flex-shrink: 0; }
+.feature-text h3 { font-size: 24px; font-weight: 600; line-height: 32px; margin-bottom: 11px; }
+.feature-text p { font-size: 18px; line-height: 32px; }
+
+/* ------------------- */
+/* 5. Mobile Nav Panel & Overlay */
+/* ------------------- */
+.mobile-nav {
+    position: fixed; top: 0; right: 0;
+    width: 85%; max-width: 320px; height: 100%;
+    background: var(--text-light); box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    z-index: 2000; transform: translateX(100%);
+    transition: transform 0.35s ease-in-out;
+    padding: 20px; display: flex; flex-direction: column;
+}
+.mobile-nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+.close-btn { background: none; border: none; font-size: 2.8rem; color: var(--primary-blue); cursor: pointer; line-height: 1; }
+.mobile-nav-links { flex-grow: 1; list-style: none; }
+.mobile-nav-links li a {
+    display: flex; align-items: center; gap: 15px; padding: 12px 10px;
+    font-size: 1rem; font-weight: 500; border-radius: 8px;
+    text-decoration: none; color: var(--text-dark);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.mobile-nav-links a:hover, .mobile-nav-links a.active { background-color: #f0f4ff; color: var(--primary-blue); }
+.mobile-nav-links img { width: 24px; height: 24px; }
+.mobile-nav .contact-button { width: 100%; }
+.overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); z-index: 1999;
+    opacity: 0; pointer-events: none; transition: opacity 0.35s ease-in-out;
+}
+body.mobile-nav-open { overflow: hidden; }
+body.mobile-nav-open .mobile-nav { transform: translateX(0); }
+body.mobile-nav-open .overlay { opacity: 1; pointer-events: auto; }
+}
+    
