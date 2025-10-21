@@ -1,0 +1,231 @@
+/* =================================== */
+/* 7. Responsive Styles                */
+/* =================================== */
+
+/* --- Tablet (max-width: 1024px) --- */
+/* For layouts smaller than desktop but larger than mobile */
+@media screen and (max-width: 1024px) {
+
+    .container {
+        padding: 0 40px; /* Reduce side padding */
+    }
+
+    /* --- Nav --- */
+    .menu-togle {
+        display: block; /* Show hamburger */
+        margin-right: 20px;
+    }
+    .nav-links, .desktop-only {
+        display: none; /* Hide desktop links */
+    }
+
+    /* --- Hero --- */
+    /* Use the flexbox layout defined in the main CSS, just adjust sizing */
+    .hero-container {
+        gap: 30px; /* Reduce gap between columns */
+    }
+    .hero-left-column {
+        flex: 1.2; /* Give text slightly more space */
+    }
+    .hero-right-column {
+        flex: 0.8; /* Give image slightly less space */
+    }
+    .hero-content h1 {
+        font-size: 3rem; /* 48px - smaller than desktop */
+        line-height: 1.3;
+        font-weight: 700; /* Use a valid weight */
+    }
+    .hero-description, .feature-list li {
+        font-size: 1rem; /* 16px */
+    }
+
+    /* --- Compliance Section --- */
+    .compliance-top-row,
+    .compliance-bottom-row {
+        gap: 40px; /* Reduce gap */
+    }
+    .compliance-heading h2 {
+        font-size: 2.25rem; /* 36px */
+    }
+    .compliance-image {
+        top: 0; /* Remove the 60px push-down */
+    }
+    .compliance-image img {
+        max-width: 100%; /* Allow image to shrink */
+    }
+    .feature-item {
+        margin-left: 0; /* Remove fixed margin */
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+
+    /* --- General Container --- */
+    .container {
+        /* Reduce side padding for mobile */
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* --- Navbar --- */
+    .nav-links, .desktop-only {
+        display: none; /* Hide desktop nav and contact button */
+    }
+    .menu-togle {
+        display: block; /* Show hamburger menu icon */
+        margin-right: 20px; /* Give it some spacing */
+    }
+
+    /* <<< THIS IS THE FIX */
+    .hero-section {
+        height: auto; /* Allows the section to grow to fit content */
+        padding: 40px 0; /* Replaces the padding from hero-container */
+    }
+
+
+    /* --- Hero Section --- */
+    /* This stacks the text and image vertically */
+    .hero-container {
+        flex-direction: column; 
+        gap: 40px;
+        padding-top: 40px; /* Add some space at the top */
+    }
+
+    /* Reset the hero content block */
+    .hero-content {
+        position: static; /* Remove absolute positioning */
+        width: 100%;
+        text-align: center; /* Center the text as in the image */
+        align-items: center; /* Center the buttons */
+    }
+
+    /* Reset the hero image block */
+    .hero-image-area {
+        position: static; /* Remove absolute positioning */
+        width: 100%;
+        max-width: 350px; /* Control image size */
+        height: auto;
+        margin: 0 auto; /* Center the image */
+    }
+
+    
+    .hero-content h1 {
+        font-size: 2.5rem; /* 40px - make heading smaller */
+        line-height: 1.3;
+    }
+    
+    .hero-description, .feature-list li {
+        font-size: 1rem; /* 16px */
+    }
+
+    /* Stack buttons vertically */
+    .button-container {
+        flex-direction: column; 
+        width: 100%;
+        gap: 1rem;
+    }
+
+    /* Hide floating cards, as they are not in the mobile view */
+    .card {
+        display: none;
+    }
+    
+    /* Hide background ellipse, it's distracting on mobile */
+    .background-ellipse {
+        display: none;
+    }
+
+    /* --- Compliance Section --- */
+    .compliance-section {
+        padding: 60px 0; /* Reduce section padding */
+    }
+    
+    /* Stack both compliance rows */
+    .compliance-top-row,
+    .compliance-bottom-row {
+        flex-direction: column; 
+        gap: 30px;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .compliance-heading h2 {
+         font-size: 2rem; /* 32px */
+         line-height: 1.4;
+    }
+
+    /* Hide the spiral arrow on mobile */
+
+    .spiral-arrow {
+  display: none;
+}
+    
+
+    /* Reset desktop-specific positioning */
+    .compliance-image {
+        top: 0;
+    }
+    
+    .compliance-image img {
+        margin-top: 0; 
+        max-width: 100%; 
+    }
+
+    .compliance-features {
+        max-width: 100%; /* Allow list to be full-width */
+    }
+
+    .feature-item {
+        margin-left: 0; /* Remove fixed desktop margins */
+        text-align: left; /* Keep text in cards left-aligned */
+    }
+
+    /* This fixes the "half image" bug */
+    .hero-banner-image {
+        width: 100%;
+        height: auto; 
+    }
+}
+
+
+/* This query only targets screens 375px or smaller */
+@media screen and (max-width: 375px) {
+
+
+   .spiral-arrow {
+    display: block;  /* Makes the arrow visible again */
+    position: absolute;
+    width: 35px;     /* A good size for mobile */
+    top: 60px;       /* Position it below the heading */
+    right: 15px;     /* Bring it in from the edge of the screen */
+}
+    .hero-content h1 {
+        font-size: 2.25rem; /* 36px */
+    }
+
+    .compliance-heading h2 {
+        font-size: 1.8rem; /* 29px */
+    }
+    
+    .feature-text h3 {
+        font-size: 1.15rem; /* ~18px */
+    }
+
+    .feature-text p {
+        font-size: 0.9rem; /* ~14.5px */
+    }
+}
+
+@media (max-width: 1023px) {
+    .nav-links, .desktop-only {
+        display: none;
+    }
+    .menu-togle {
+        display: block;
+        font-size: 1.5rem;
+        color: var(--text-dark);
+        text-decoration: none;
+        margin-right: 20px;
+    }
+}

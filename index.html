@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compliance for Analysts</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&family=Inter:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
 
@@ -26,23 +29,85 @@
                     <li><a href="#">FAQ</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
+
             </nav>
 
-            <button class="contact-button desktop-only">
+            <div class="contact-button desktop-only">
                 <img src="Assets/Contact-icon.png" alt="Phone Icon">
                 Contact Us
-            </button>
+            </div>
 
-            <button class="hamburger-menu" id="open-menu-btn" aria-label="Open Menu">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-            </button>
+        <a href="#" class="menu-togle nav-link" id="open-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+        </a>
+
         </div>
+
+        
     </header>
+
+   <div class="overlay" id="overlay"></div>
+
+<nav class="mobile-nav" id="mobile-nav">
+    
+    <div class="mobile-nav-header">
+        <div class="logo">
+            <a href="#"><img src="Assets/Logo.png" alt="Company Logo"></a>
+        </div>
+        <a href="#" class="close-btn" id="close-menu-btn">
+            <i class="fa-solid fa-xmark"></i>
+        </a>
+    </div>
+
+    <ul class="mobile-nav-links">
+        <li>
+            <a href="#" class="active">
+                <img src="Assets/Home.png" alt=""> 
+                <span>Home</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="Assets/AboutUs.png" alt=""> 
+                <span>About Us</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="Assets/Our Services.png" alt=""> 
+                <span>Our Services</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="Assets/Pricing.png" alt=""> 
+                <span>Pricing</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="Assets/FAQ.png" alt=""> 
+                <span>FAQ</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="Assets/Contact.png" alt=""> 
+                <span>Contact</span>
+            </a>
+        </li>
+    </ul>
+
+    <a href="/contact" class="contact-button" style="width: 100%; justify-content: center;">
+        <img src="Assets/Contact-icon.png" alt="">
+        Contact Us
+    </a>
+</nav>
     
     <main>
 
         <section class="hero-section">
-    <div class="background-ellipse"></div>
+   
     <div class="container hero-container">
 
         <div class="hero-left-column">
@@ -130,34 +195,21 @@
         </section>
     </main>
 
-    <div class="mobile-nav" id="mobile-nav">
-        <div class="mobile-nav-header">
-            <div class="logo">
-                <a href="#"><img src="Assets/Logo.png" alt="Company Logo"></a>
-            </div>
-            <button class="close-btn" id="close-menu-btn" aria-label="Close Menu">&times;</button>
-        </div>
-        <ul class="mobile-nav-links">
-            <li><a href="#"><img src="Assets/Home.png" alt=""> Home</a></li>
-            <li><a href="#"><img src="Assets/AboutUs.png" alt=""> About Us</a></li>
-            <li><a href="#"><img src="Assets/Our Services.png" alt=""> Our Services</a></li>
-            <li><a href="#"><img src="Assets/Pricing.png" alt=""> Pricing</a></li>
-            <li><a href="#"><img src="Assets/FAQ.png" alt=""> FAQ</a></li>
-            <li><a href="#"><img src="Assets/Contact.png" alt=""> Contact</a></li>
-        </ul>
-        <button class="contact-button">Contact Us</button>
-    </div>
-    <!-- <div class="overlay" id="overlay"></div> -->
-
-    <script>
+    
+   <script>
+        // Get all the elements
         const openMenuBtn = document.getElementById('open-menu-btn');
         const closeMenuBtn = document.getElementById('close-menu-btn');
         const overlay = document.getElementById('overlay');
+        const mobileNav = document.getElementById('mobile-nav');
 
+        // Function to open/close the menu
         function toggleMenu() {
+            // This one line does all the work!
             document.body.classList.toggle('mobile-nav-open');
         }
 
+        // Add click listeners to the buttons and overlay
         openMenuBtn.addEventListener('click', toggleMenu);
         closeMenuBtn.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);

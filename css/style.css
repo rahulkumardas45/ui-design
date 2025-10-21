@@ -122,7 +122,7 @@ body {
     left: 72px;
     top: 100px;
     z-index: 2; /* Ensures content is on top of everything */
-
+    
     /* Internal layout for the text, list, and buttons */
     display: flex;
     flex-direction: column;
@@ -142,6 +142,7 @@ body {
     color: #4356D6; /* Sets the text color to blue */
     position: relative; /* This is the anchor for positioning the underline image */
     display: inline-block;
+    z-index: 0;
 }
 
 .hero-content .highlight img {
@@ -150,7 +151,7 @@ body {
     left: 0;
     width: 100%;          /* Stretches the image to the full width of "Compliance" */
     height: 8px;          /* Controls the thickness of the line */
-    z-index: -1;
+    z-index: 0;
 }
 
 .hero-description {
@@ -498,98 +499,96 @@ body {
 }
 
 
+
+
 /* =================================== */
 /* 6. Mobile Navigation & Responsiveness */
 /* =================================== */
 
-/* --- Default Mobile Styles (under 1024px) --- */
-.nav-links, .desktop-only {
-    display: none;
-}
-.hamburger-menu {
-    display: block;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    color: var(--dark-text);
-}
-
-/* --- Mobile Nav Panel --- */
-.mobile-nav {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 85%;
-    max-width: 320px;
-    height: 100%;
-    background: var(--white);
-    box-shadow: -5px 0 25px rgba(104, 19, 19, 0.15);
-    z-index: 2000;
-    transform: translateX(100%); /* Start off-screen */
-    transition: transform 0.35s ease-in-out;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-}
-.mobile-nav-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-    width: 300px;
-}
-.close-btn {
-    background: none;
-    border: none;
-    font-size: 2.8rem;
-    color: var(--primary-blue);
-    cursor: pointer;
-    line-height: 1;
-}
-.mobile-nav-links {
-    flex-grow: 1;
-}
-.mobile-nav-links li a {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 12px 10px;
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 8px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-.mobile-nav-links a:hover,
-.mobile-nav-links a.active {
-    background-color: #f0f4ff;
-    color: var(--primary-blue);
-}
-.mobile-nav-links img {
-    width: 24px;
-    height: 24px;
-}
-.mobile-nav .contact-button {
-    width: 100%;
-}
+/* --- Hides desktop links and shows hamburger by default --- */
 
 
-
-/* --- Overlay --- */
+/* --- The Dark Overlay (70% black) --- */
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     z-index: 1999;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.35s ease-in-out;
 }
 
-/* --- Active State (Toggled by JavaScript) --- */
+/* --- The Menu Panel --- */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 85%;
+    max-width: 320px; /* Max width like your screenshot */
+    height: 100%;
+    background: #FFFFFF;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15); /* Softer black shadow */
+    z-index: 2000;
+    transform: translateX(100%); /* Start off-screen */
+    transition: transform 0.35s ease-in-out;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Adds space between items */
+}
+
+/* --- Menu Header (Logo/Close) --- */
+.mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.8rem; /* Smaller X icon */
+    color: var(--primary-blue);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* --- Menu Links --- */
+.mobile-nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* Pushes button to the bottom */
+}
+.mobile-nav-links li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.mobile-nav-links li a img {
+    width: 24px;
+    height: 24px;
+}
+
+/* --- Active/Hover Link Style --- */
+.mobile-nav-links li a:hover,
+.mobile-nav-links li a.active {
+    background-color: #f0f4ff; /* Light blue background */
+    color: var(--primary-blue);
+}
+
+
+/* --- This JavaScript-toggled class makes it all work --- */
 body.mobile-nav-open {
     overflow: hidden; /* Prevent scrolling when menu is open */
 }
@@ -602,15 +601,11 @@ body.mobile-nav-open .overlay {
 }
 
 
-/* =================================== */
-/* 7. Desktop Breakpoint               */
-/* =================================== */
-
-@media (min-width: 1440px) {
+.menu-togle{
+       display: none;
+   }
     /* Hide mobile elements on desktop */
-    .hamburger-menu {
-        display: none;
-    }
+    
     
     /* Show desktop elements */
     .nav-links, .desktop-only {
@@ -632,277 +627,6 @@ body.mobile-nav-open .overlay {
     .nav-links a.active, .nav-links a:hover {
         color: var(--primary-blue);
     }
-}
 
-@media (max-width: 425px) {
 
-    :root {
-    --primary-blue: #4356D6;
-    --text-dark: #000000;
-    --text-light: #FFFFFF;
-    --background-light: #FAFBFF;
-    --font-roboto: 'Roboto', sans-serif;
-    --font-inter: 'Inter', sans-serif;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    margin: 0;
-    font-family: var(--font-roboto);
-    background-color: var(--text-light);
-    overflow-x: hidden; /* Prevents horizontal scroll */
-}
-
-.container {
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 16px; /* Padding for 375px mobile view */
-}
-
-/* ------------------- */
-/* 2. Navbar (Mobile First) */
-/* ------------------- */
-.navbar {
-    width: 100%;
-    height: 54px;
-    display: flex;
-    align-items: center;
-    background: var(--text-light);
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.11);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo img {
-    height: 34px;
-}
-
-/* Hide desktop elements on mobile */
-.nav-links, .desktop-only {
-    display: none;
-}
-
-.hamburger-menu {
-    display: block;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    color: var(--text-dark);
-}
-.hamburger-menu svg { width: 24px; height: 24px; }
-
-/* ------------------- */
-/* 3. Hero Section (Mobile First) */
-/* ------------------- */
-/* =================================== */
-/* 3. Hero Section (Mobile First)      */
-/* =================================== */
-
-.hero-section {
-    position: relative;
-    width: 100%;
-    background: #FAFBFF;
-    padding: 40px 0;
-    overflow: hidden;
-}
-
-/* .background-ellipse { 
-    display: none; 
-} */
-
-.hero-container {
-    display: flex;
-    flex-direction: column; /* This stacks the left and right columns on mobile */
-    align-items: center;
-    gap: 36px;
-}
-
-/* NEW: Style the new column wrappers for mobile */
-.hero-left-column, .hero-right-column {
-    width: 100%;
-}
-
-.hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 24px;
-}
-
-.hero-content h1 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    font-size: 34px;
-    line-height: 48px;
-    text-transform: capitalize;
-    color: #000000;
-}
-
-.hero-content .highlight {
-    color: #4356D6;
-    position: relative;
-    display: inline-block;
-}
-
-.hero-content .highlight-underline {
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    width: 100%;
-    height: auto;
-}
-
-.hero-description {
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    line-height: 32px;
-    color: #000000;
-    max-width: 343px;
-}
-
-.feature-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 315px;
-}
-
-.feature-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    font-size: 18px;
-    line-height: 32px;
-    text-align: left;
-}
-
-.feature-list img {
-    width: 24px;
-    height: 24px;
-    margin-top: 4px;
-}
-
-.button-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-    padding-top: 10px;
-}
-
-.btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    height: 46px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    border-radius: 8px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
-.btn-primary {
-    background-color: #4356D6;
-    color: #FFFFFF;
-    border: 1px solid #4356D6;
-}
-
-.btn-secondary {
-    background-color: #FFFFFF;
-    color: #4356D6;
-    border: 2px solid #4356D6;
-}
-
-.hero-image-area { width: 24px; height: 24px; }
-   
-
-/* ------------------- */
-/* 4. Compliance Section (Mobile First) */
-/* ------------------- */
-.compliance-section {
-    padding: 50px 0;
-}
-.compliance-layout, .compliance-top-row, .compliance-bottom-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 36px;
-}
-.spiral-arrow { display: none; }
-.compliance-heading h2 {
-    font-size: 34px;
-    font-weight: 600;
-    line-height: 48px;
-}
-.compliance-heading .highlight { color: var(--primary-blue); }
-.compliance-description { font-size: 18px; line-height: 32px; }
-.compliance-features { display: flex; flex-direction: column; gap: 26px; width: 100%; }
-.feature-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 26px;
-    background: var(--background-light);
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #E2E7FF;
-    text-align: left;
-}
-.feature-icon { width: 36px; height: 36px; flex-shrink: 0; }
-.feature-text h3 { font-size: 24px; font-weight: 600; line-height: 32px; margin-bottom: 11px; }
-.feature-text p { font-size: 18px; line-height: 32px; }
-
-/* ------------------- */
-/* 5. Mobile Nav Panel & Overlay */
-/* ------------------- */
-.mobile-nav {
-    position: fixed; top: 0; right: 0;
-    width: 85%; max-width: 320px; height: 100%;
-    background: var(--text-light); box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
-    z-index: 2000; transform: translateX(100%);
-    transition: transform 0.35s ease-in-out;
-    padding: 20px; display: flex; flex-direction: column;
-}
-.mobile-nav-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
-.close-btn { background: none; border: none; font-size: 2.8rem; color: var(--primary-blue); cursor: pointer; line-height: 1; }
-.mobile-nav-links { flex-grow: 1; list-style: none; }
-.mobile-nav-links li a {
-    display: flex; align-items: center; gap: 15px; padding: 12px 10px;
-    font-size: 1rem; font-weight: 500; border-radius: 8px;
-    text-decoration: none; color: var(--text-dark);
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-.mobile-nav-links a:hover, .mobile-nav-links a.active { background-color: #f0f4ff; color: var(--primary-blue); }
-.mobile-nav-links img { width: 24px; height: 24px; }
-.mobile-nav .contact-button { width: 100%; }
-.overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.5); z-index: 1999;
-    opacity: 0; pointer-events: none; transition: opacity 0.35s ease-in-out;
-}
-body.mobile-nav-open { overflow: hidden; }
-body.mobile-nav-open .mobile-nav { transform: translateX(0); }
-body.mobile-nav-open .overlay { opacity: 1; pointer-events: auto; }
-}
     
