@@ -92,6 +92,7 @@ body {
 .hero-section {
     position: relative; /* This is the anchor for all absolutely positioned children */
     width: 100%;
+    
     max-width: 1440px; /* Max-width from your design spec */
     height: 829px;     /* Height from your design spec */
     margin: 0 auto;    /* Center the container on larger screens */
@@ -119,7 +120,7 @@ body {
     width: 606px;
     height: auto; /* auto is better than a fixed height for content changes */
     left: 72px;
-    top: 180px;
+    top: 100px;
     z-index: 2; /* Ensures content is on top of everything */
 
     /* Internal layout for the text, list, and buttons */
@@ -242,7 +243,7 @@ body {
     width: 739.13px;
     height: 607px;
     left: 677.87px;
-    top: 156px;
+    top: 80px;
     z-index: 1; /* Sits between the content and the background ellipse */
 }
 
@@ -358,8 +359,8 @@ body {
     position: absolute;
 
     /* These values position the arrow. You may need to tweak them slightly. */
-    top: 60px;
-    right: -30px; /* A negative value pushes it outside the parent container to the right */
+    top: 70px;
+    right: -10px; /* A negative value pushes it outside the parent container to the right */
 
     /* Optional: Control the size of the arrow */
     width: 50px;
@@ -371,7 +372,12 @@ body {
 .compliance-bottom-row {
     display: flex;
     align-items: flex-start; /* Aligns content to the top */
-    gap: 80px; /* This creates the horizontal space between the two columns in each row */
+    gap: 150px; /* This creates the horizontal space between the two columns in each row */
+}
+
+.compliance-image {
+    position: relative;
+    top: 60px; /* shifts the image down without affecting other spacing */
 }
 
 /* --- Column Sizing --- */
@@ -379,7 +385,7 @@ body {
 .compliance-text,
 .compliance-image,
 .compliance-features-wrapper {
-    flex: 1; /* This makes all four columns take up equal space */
+    flex: 9; /* This makes all four columns take up equal space */
     gap: 2px;
 }
 
@@ -414,35 +420,81 @@ body {
     gap: 25px; /* Space between each feature card */
 }
 
-/* Feature Item Card Styling */
-.feature-item {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    background: linear-gradient(261.18deg, #FAFBFF -0.46%, #FAFBFF 100.67%);
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #EAEBEE;
+/* ================================ */
+/* FEATURE SECTION - COMPLIANCE BOX */
+/* ================================ */
+
+.compliance-features {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 32px;
+  padding: 0;
+
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto; /* Center on page */
+
+  /* Optional background or layout flex */
+  box-sizing: border-box;
 }
+
+/* ================================ */
+/* FEATURE ITEM CARD STYLING        */
+/* ================================ */
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(261.18deg, #fafbff -0.46%, #ffffff 100.67%);
+  padding: 20px 24px;
+  border-radius: 10px;
+  border: 1px solid #e2e7ff;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+.feature-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.08);
+  border-color: #c9d3ff;
+}
+
+/* ================================ */
+/* ICON STYLING                     */
+/* ================================ */
 
 .feature-icon {
-    width: 50px;
-    height: 50px;
-    flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
+.feature-item:hover .feature-icon {
+  transform: scale(1.05);
+}
+
+/* ================================ */
+/* TEXT STYLING                     */
+/* ================================ */
+
 .feature-text h3 {
-    font-size: 22px;
-    font-weight: 700;
-    color: #000000;
-    margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0b0b0b;
+  margin: 0 0 6px 0;
 }
 
 .feature-text p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #555555;
-    margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555;
+  margin: 0;
 }
 
 
