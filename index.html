@@ -14,44 +14,45 @@
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <a href="#"><img src="Assets/Logo.png" alt="Company Logo"></a>
-            </div>
-            
-            <nav class="nav-links">
-                <ul>
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Our Services</a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
+  
+   
 
-            </nav>
+ <nav class="nav-bar">
 
-            <div class="contact-button desktop-only">
-                <img src="Assets/Contact-icon.png" alt="Phone Icon">
-                Contact Us
-            </div>
+                <div class="logo-box">
+                    <img src="Assets/Logo.png" alt="Company Logo">
+                </div>
 
-        <a href="#" class="menu-togle nav-link" id="open-menu-btn">
+                <div class="nav-items">
+                    <ul class="nav-items-parent">
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="contact">
+                    <img src="Assets/Contact-icon.png" alt="Phone Icon">
+                    Contact Us
+                </div>
+
+                <a href="#" class="menu-togle nav-link" id="open-menu-btn">
             <i class="fa-solid fa-bars"></i>
         </a>
 
-        </div>
 
-        
-    </header>
+            </nav>
 
-   <div class="overlay" id="overlay"></div>
+    <div class="overlay" id="overlay"></div>
 
-<nav class="mobile-nav" id="mobile-nav">
+    <!-- Mobile Nav -->
+   <nav class="mobile-nav" id="mobile-nav">
     
     <div class="mobile-nav-header">
-        <div class="logo">
+        <div class="logo-mov">
             <a href="#"><img src="Assets/Logo.png" alt="Company Logo"></a>
         </div>
         <a href="#" class="close-btn" id="close-menu-btn">
@@ -98,12 +99,15 @@
         </li>
     </ul>
 
-    <a href="/contact" class="contact-button" style="width: 100%; justify-content: center;">
-        <img src="Assets/Contact-icon.png" alt="">
-        Contact Us
-    </a>
-</nav>
-    
+<button class="contact-button">Contact Us</button>
+
+
+
+
+</nav> 
+
+
+
     <main>
 
         <section class="hero-section">
